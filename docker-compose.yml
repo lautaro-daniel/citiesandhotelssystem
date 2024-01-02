@@ -1,0 +1,33 @@
+version: '2.1'
+
+services:
+  eureka-sv:
+    build: eureka-sv
+      context: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem
+      dockerfile: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem\Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+    networks:
+      - 'citiesandhotels-network'
+  cities-service:
+    build: cities-service
+      context: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem
+      dockerfile: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem\Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8083:8083"
+    networks:
+      - 'citiesandhotels-network'
+  hotels-service:
+    build: hotels-service
+      context: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem
+      dockerfile: \Users\Lautaro Gonzalez\Desktop\citiesandhotelssystem\Dockerfile
+    mem_limit: 512m
+    ports:
+      - "8082:8082"
+    networks:
+      - 'citiesandhotels-network'
+
+networks:
+  citiesandhotels-network:
